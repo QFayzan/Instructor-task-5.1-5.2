@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public TextMeshProUGUI healthDisplay;
     public bool isDead = false;
     public Rigidbody rb;
     public Transform tf;
@@ -22,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public bool isJumping;
     public bool isGrounded; //here is grounded means white tile since player can walk on it for animations
     public bool canMove = true;
+    public static int score = 0;
+    public TextMeshProUGUI scoreDisplay;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +36,10 @@ public class PlayerController : MonoBehaviour
         rotationSpeed = 720;
         health = 3;
         canMove = true;
+        score = 0;
 
     }
-
+    
     // Update is called once per frame
     void LateUpdate()
     {
@@ -53,7 +58,6 @@ public class PlayerController : MonoBehaviour
             if (jumpTimer > 1.5f && Input.GetKeyDown(KeyCode.Space))
             {
                 Jump();
-
             }
         }
     }
@@ -71,5 +75,27 @@ public class PlayerController : MonoBehaviour
         KeyboadMovementDirection = new Vector3(horizontalInput, 0, 0);
         KeyboadMovementDirection.Normalize();
         transform.Translate(KeyboadMovementDirection * moveSpeed * Time.deltaTime, Space.World);
+    }
+    public void Death()
+    {
+        isDead = true;
+        canMove=false;
+        Debug.Log("Game Over");
+    }
+    private void Update()
+    {
+        healthDisplay.text = "Current HP is :" + health.ToString();
+        scoreDisplay.text = "Score :" + score.ToString();
+        if (health <1 )
+        {
+            Death();
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health--;
+        }
     }
 }
