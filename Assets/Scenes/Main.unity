@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 47265593}
   - component: {fileID: 47265594}
   - component: {fileID: 47265595}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ScorePoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +989,7 @@ GameObject:
   - component: {fileID: 550457008}
   - component: {fileID: 550457009}
   - component: {fileID: 550457010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ScorePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1879,7 +1879,7 @@ GameObject:
   - component: {fileID: 1426695047}
   - component: {fileID: 1426695048}
   - component: {fileID: 1426695049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ScorePoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
